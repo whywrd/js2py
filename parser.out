@@ -1,0 +1,1015 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> ID ASSIGN expression
+Rule 2     expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE
+Rule 3     expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+Rule 4     expression -> ID SUBSCRIPT ID ASSIGN expression
+Rule 5     expression -> ID SUBSCRIPT ID
+Rule 6     expression -> expression PLUS term
+Rule 7     expression -> expression MINUS term
+Rule 8     expression -> expression GTHAN term
+Rule 9     expression -> expression EQUALTO term
+Rule 10    expression -> expression AND term
+Rule 11    expression -> expression OR term
+Rule 12    expression -> term
+Rule 13    term -> factor
+Rule 14    term -> ID
+Rule 15    factor -> NUMBER
+Rule 16    factor -> TRUE
+Rule 17    factor -> FALSE
+Rule 18    factor -> STR
+Rule 19    factor -> LBRACE expression RBRACE
+Rule 20    factor -> LPAREN expression RPAREN
+
+Terminals, with rules where they appear
+
+AND                  : 10
+ASSIGN               : 1 4
+ELSE                 : 3
+EQUALTO              : 9
+FALSE                : 17
+GTHAN                : 8
+ID                   : 1 4 4 5 5 14
+IF                   : 2 3
+LBRACE               : 2 3 3 19
+LPAREN               : 2 3 20
+MINUS                : 7
+NUMBER               : 15
+OR                   : 11
+PLUS                 : 6
+RBRACE               : 2 3 3 19
+RPAREN               : 2 3 20
+STR                  : 18
+SUBSCRIPT            : 4 5
+TRUE                 : 16
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 2 3 3 3 4 6 7 8 9 10 11 19 20 0
+factor               : 13
+term                 : 6 7 8 9 10 11 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 1
+
+    (0) S' -> expression .
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 2
+
+    (1) expression -> ID . ASSIGN expression
+    (4) expression -> ID . SUBSCRIPT ID ASSIGN expression
+    (5) expression -> ID . SUBSCRIPT ID
+    (14) term -> ID .
+
+    ASSIGN          shift and go to state 18
+    SUBSCRIPT       shift and go to state 19
+    PLUS            reduce using rule 14 (term -> ID .)
+    MINUS           reduce using rule 14 (term -> ID .)
+    GTHAN           reduce using rule 14 (term -> ID .)
+    EQUALTO         reduce using rule 14 (term -> ID .)
+    AND             reduce using rule 14 (term -> ID .)
+    OR              reduce using rule 14 (term -> ID .)
+    $end            reduce using rule 14 (term -> ID .)
+    RPAREN          reduce using rule 14 (term -> ID .)
+    RBRACE          reduce using rule 14 (term -> ID .)
+
+
+state 3
+
+    (2) expression -> IF . LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> IF . LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+
+    LPAREN          shift and go to state 20
+
+
+state 4
+
+    (20) factor -> LPAREN . expression RPAREN
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 21
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 5
+
+    (19) factor -> LBRACE . expression RBRACE
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 22
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 6
+
+    (12) expression -> term .
+
+    PLUS            reduce using rule 12 (expression -> term .)
+    MINUS           reduce using rule 12 (expression -> term .)
+    GTHAN           reduce using rule 12 (expression -> term .)
+    EQUALTO         reduce using rule 12 (expression -> term .)
+    AND             reduce using rule 12 (expression -> term .)
+    OR              reduce using rule 12 (expression -> term .)
+    $end            reduce using rule 12 (expression -> term .)
+    RPAREN          reduce using rule 12 (expression -> term .)
+    RBRACE          reduce using rule 12 (expression -> term .)
+
+
+state 7
+
+    (13) term -> factor .
+
+    PLUS            reduce using rule 13 (term -> factor .)
+    MINUS           reduce using rule 13 (term -> factor .)
+    GTHAN           reduce using rule 13 (term -> factor .)
+    EQUALTO         reduce using rule 13 (term -> factor .)
+    AND             reduce using rule 13 (term -> factor .)
+    OR              reduce using rule 13 (term -> factor .)
+    $end            reduce using rule 13 (term -> factor .)
+    RPAREN          reduce using rule 13 (term -> factor .)
+    RBRACE          reduce using rule 13 (term -> factor .)
+
+
+state 8
+
+    (15) factor -> NUMBER .
+
+    PLUS            reduce using rule 15 (factor -> NUMBER .)
+    MINUS           reduce using rule 15 (factor -> NUMBER .)
+    GTHAN           reduce using rule 15 (factor -> NUMBER .)
+    EQUALTO         reduce using rule 15 (factor -> NUMBER .)
+    AND             reduce using rule 15 (factor -> NUMBER .)
+    OR              reduce using rule 15 (factor -> NUMBER .)
+    $end            reduce using rule 15 (factor -> NUMBER .)
+    RPAREN          reduce using rule 15 (factor -> NUMBER .)
+    RBRACE          reduce using rule 15 (factor -> NUMBER .)
+
+
+state 9
+
+    (16) factor -> TRUE .
+
+    PLUS            reduce using rule 16 (factor -> TRUE .)
+    MINUS           reduce using rule 16 (factor -> TRUE .)
+    GTHAN           reduce using rule 16 (factor -> TRUE .)
+    EQUALTO         reduce using rule 16 (factor -> TRUE .)
+    AND             reduce using rule 16 (factor -> TRUE .)
+    OR              reduce using rule 16 (factor -> TRUE .)
+    $end            reduce using rule 16 (factor -> TRUE .)
+    RPAREN          reduce using rule 16 (factor -> TRUE .)
+    RBRACE          reduce using rule 16 (factor -> TRUE .)
+
+
+state 10
+
+    (17) factor -> FALSE .
+
+    PLUS            reduce using rule 17 (factor -> FALSE .)
+    MINUS           reduce using rule 17 (factor -> FALSE .)
+    GTHAN           reduce using rule 17 (factor -> FALSE .)
+    EQUALTO         reduce using rule 17 (factor -> FALSE .)
+    AND             reduce using rule 17 (factor -> FALSE .)
+    OR              reduce using rule 17 (factor -> FALSE .)
+    $end            reduce using rule 17 (factor -> FALSE .)
+    RPAREN          reduce using rule 17 (factor -> FALSE .)
+    RBRACE          reduce using rule 17 (factor -> FALSE .)
+
+
+state 11
+
+    (18) factor -> STR .
+
+    PLUS            reduce using rule 18 (factor -> STR .)
+    MINUS           reduce using rule 18 (factor -> STR .)
+    GTHAN           reduce using rule 18 (factor -> STR .)
+    EQUALTO         reduce using rule 18 (factor -> STR .)
+    AND             reduce using rule 18 (factor -> STR .)
+    OR              reduce using rule 18 (factor -> STR .)
+    $end            reduce using rule 18 (factor -> STR .)
+    RPAREN          reduce using rule 18 (factor -> STR .)
+    RBRACE          reduce using rule 18 (factor -> STR .)
+
+
+state 12
+
+    (6) expression -> expression PLUS . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 23
+    factor                         shift and go to state 7
+
+state 13
+
+    (7) expression -> expression MINUS . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 25
+    factor                         shift and go to state 7
+
+state 14
+
+    (8) expression -> expression GTHAN . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 26
+    factor                         shift and go to state 7
+
+state 15
+
+    (9) expression -> expression EQUALTO . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 27
+    factor                         shift and go to state 7
+
+state 16
+
+    (10) expression -> expression AND . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 28
+    factor                         shift and go to state 7
+
+state 17
+
+    (11) expression -> expression OR . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 24
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    term                           shift and go to state 29
+    factor                         shift and go to state 7
+
+state 18
+
+    (1) expression -> ID ASSIGN . expression
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 30
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 19
+
+    (4) expression -> ID SUBSCRIPT . ID ASSIGN expression
+    (5) expression -> ID SUBSCRIPT . ID
+
+    ID              shift and go to state 31
+
+
+state 20
+
+    (2) expression -> IF LPAREN . expression RPAREN LBRACE expression RBRACE
+    (3) expression -> IF LPAREN . expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 32
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 21
+
+    (20) factor -> LPAREN expression . RPAREN
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    RPAREN          shift and go to state 33
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 22
+
+    (19) factor -> LBRACE expression . RBRACE
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    RBRACE          shift and go to state 34
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 23
+
+    (6) expression -> expression PLUS term .
+
+    PLUS            reduce using rule 6 (expression -> expression PLUS term .)
+    MINUS           reduce using rule 6 (expression -> expression PLUS term .)
+    GTHAN           reduce using rule 6 (expression -> expression PLUS term .)
+    EQUALTO         reduce using rule 6 (expression -> expression PLUS term .)
+    AND             reduce using rule 6 (expression -> expression PLUS term .)
+    OR              reduce using rule 6 (expression -> expression PLUS term .)
+    $end            reduce using rule 6 (expression -> expression PLUS term .)
+    RPAREN          reduce using rule 6 (expression -> expression PLUS term .)
+    RBRACE          reduce using rule 6 (expression -> expression PLUS term .)
+
+
+state 24
+
+    (14) term -> ID .
+
+    PLUS            reduce using rule 14 (term -> ID .)
+    MINUS           reduce using rule 14 (term -> ID .)
+    GTHAN           reduce using rule 14 (term -> ID .)
+    EQUALTO         reduce using rule 14 (term -> ID .)
+    AND             reduce using rule 14 (term -> ID .)
+    OR              reduce using rule 14 (term -> ID .)
+    $end            reduce using rule 14 (term -> ID .)
+    RPAREN          reduce using rule 14 (term -> ID .)
+    RBRACE          reduce using rule 14 (term -> ID .)
+
+
+state 25
+
+    (7) expression -> expression MINUS term .
+
+    PLUS            reduce using rule 7 (expression -> expression MINUS term .)
+    MINUS           reduce using rule 7 (expression -> expression MINUS term .)
+    GTHAN           reduce using rule 7 (expression -> expression MINUS term .)
+    EQUALTO         reduce using rule 7 (expression -> expression MINUS term .)
+    AND             reduce using rule 7 (expression -> expression MINUS term .)
+    OR              reduce using rule 7 (expression -> expression MINUS term .)
+    $end            reduce using rule 7 (expression -> expression MINUS term .)
+    RPAREN          reduce using rule 7 (expression -> expression MINUS term .)
+    RBRACE          reduce using rule 7 (expression -> expression MINUS term .)
+
+
+state 26
+
+    (8) expression -> expression GTHAN term .
+
+    PLUS            reduce using rule 8 (expression -> expression GTHAN term .)
+    MINUS           reduce using rule 8 (expression -> expression GTHAN term .)
+    GTHAN           reduce using rule 8 (expression -> expression GTHAN term .)
+    EQUALTO         reduce using rule 8 (expression -> expression GTHAN term .)
+    AND             reduce using rule 8 (expression -> expression GTHAN term .)
+    OR              reduce using rule 8 (expression -> expression GTHAN term .)
+    $end            reduce using rule 8 (expression -> expression GTHAN term .)
+    RPAREN          reduce using rule 8 (expression -> expression GTHAN term .)
+    RBRACE          reduce using rule 8 (expression -> expression GTHAN term .)
+
+
+state 27
+
+    (9) expression -> expression EQUALTO term .
+
+    PLUS            reduce using rule 9 (expression -> expression EQUALTO term .)
+    MINUS           reduce using rule 9 (expression -> expression EQUALTO term .)
+    GTHAN           reduce using rule 9 (expression -> expression EQUALTO term .)
+    EQUALTO         reduce using rule 9 (expression -> expression EQUALTO term .)
+    AND             reduce using rule 9 (expression -> expression EQUALTO term .)
+    OR              reduce using rule 9 (expression -> expression EQUALTO term .)
+    $end            reduce using rule 9 (expression -> expression EQUALTO term .)
+    RPAREN          reduce using rule 9 (expression -> expression EQUALTO term .)
+    RBRACE          reduce using rule 9 (expression -> expression EQUALTO term .)
+
+
+state 28
+
+    (10) expression -> expression AND term .
+
+    PLUS            reduce using rule 10 (expression -> expression AND term .)
+    MINUS           reduce using rule 10 (expression -> expression AND term .)
+    GTHAN           reduce using rule 10 (expression -> expression AND term .)
+    EQUALTO         reduce using rule 10 (expression -> expression AND term .)
+    AND             reduce using rule 10 (expression -> expression AND term .)
+    OR              reduce using rule 10 (expression -> expression AND term .)
+    $end            reduce using rule 10 (expression -> expression AND term .)
+    RPAREN          reduce using rule 10 (expression -> expression AND term .)
+    RBRACE          reduce using rule 10 (expression -> expression AND term .)
+
+
+state 29
+
+    (11) expression -> expression OR term .
+
+    PLUS            reduce using rule 11 (expression -> expression OR term .)
+    MINUS           reduce using rule 11 (expression -> expression OR term .)
+    GTHAN           reduce using rule 11 (expression -> expression OR term .)
+    EQUALTO         reduce using rule 11 (expression -> expression OR term .)
+    AND             reduce using rule 11 (expression -> expression OR term .)
+    OR              reduce using rule 11 (expression -> expression OR term .)
+    $end            reduce using rule 11 (expression -> expression OR term .)
+    RPAREN          reduce using rule 11 (expression -> expression OR term .)
+    RBRACE          reduce using rule 11 (expression -> expression OR term .)
+
+
+state 30
+
+    (1) expression -> ID ASSIGN expression .
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GTHAN resolved as shift
+  ! shift/reduce conflict for EQUALTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 1 (expression -> ID ASSIGN expression .)
+    RPAREN          reduce using rule 1 (expression -> ID ASSIGN expression .)
+    RBRACE          reduce using rule 1 (expression -> ID ASSIGN expression .)
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+  ! PLUS            [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+  ! MINUS           [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+  ! GTHAN           [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+  ! EQUALTO         [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+  ! AND             [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+  ! OR              [ reduce using rule 1 (expression -> ID ASSIGN expression .) ]
+
+
+state 31
+
+    (4) expression -> ID SUBSCRIPT ID . ASSIGN expression
+    (5) expression -> ID SUBSCRIPT ID .
+
+    ASSIGN          shift and go to state 35
+    PLUS            reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    MINUS           reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    GTHAN           reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    EQUALTO         reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    AND             reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    OR              reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    $end            reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    RPAREN          reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+    RBRACE          reduce using rule 5 (expression -> ID SUBSCRIPT ID .)
+
+
+state 32
+
+    (2) expression -> IF LPAREN expression . RPAREN LBRACE expression RBRACE
+    (3) expression -> IF LPAREN expression . RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    RPAREN          shift and go to state 36
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 33
+
+    (20) factor -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    GTHAN           reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    EQUALTO         reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    AND             reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    OR              reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    $end            reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+    RBRACE          reduce using rule 20 (factor -> LPAREN expression RPAREN .)
+
+
+state 34
+
+    (19) factor -> LBRACE expression RBRACE .
+
+    PLUS            reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    MINUS           reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    GTHAN           reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    EQUALTO         reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    AND             reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    OR              reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    $end            reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    RPAREN          reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+    RBRACE          reduce using rule 19 (factor -> LBRACE expression RBRACE .)
+
+
+state 35
+
+    (4) expression -> ID SUBSCRIPT ID ASSIGN . expression
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 37
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 36
+
+    (2) expression -> IF LPAREN expression RPAREN . LBRACE expression RBRACE
+    (3) expression -> IF LPAREN expression RPAREN . LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+
+    LBRACE          shift and go to state 38
+
+
+state 37
+
+    (4) expression -> ID SUBSCRIPT ID ASSIGN expression .
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for GTHAN resolved as shift
+  ! shift/reduce conflict for EQUALTO resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    $end            reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .)
+    RPAREN          reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .)
+    RBRACE          reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .)
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+  ! PLUS            [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+  ! MINUS           [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+  ! GTHAN           [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+  ! EQUALTO         [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+  ! AND             [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+  ! OR              [ reduce using rule 4 (expression -> ID SUBSCRIPT ID ASSIGN expression .) ]
+
+
+state 38
+
+    (2) expression -> IF LPAREN expression RPAREN LBRACE . expression RBRACE
+    (3) expression -> IF LPAREN expression RPAREN LBRACE . expression RBRACE ELSE LBRACE expression RBRACE
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 39
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 39
+
+    (2) expression -> IF LPAREN expression RPAREN LBRACE expression . RBRACE
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression . RBRACE ELSE LBRACE expression RBRACE
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    RBRACE          shift and go to state 40
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 40
+
+    (2) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE . ELSE LBRACE expression RBRACE
+
+    PLUS            reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    MINUS           reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    GTHAN           reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    EQUALTO         reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    AND             reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    OR              reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    $end            reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    RPAREN          reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    RBRACE          reduce using rule 2 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE .)
+    ELSE            shift and go to state 41
+
+
+state 41
+
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE . LBRACE expression RBRACE
+
+    LBRACE          shift and go to state 42
+
+
+state 42
+
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE . expression RBRACE
+    (1) expression -> . ID ASSIGN expression
+    (2) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE
+    (3) expression -> . IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE
+    (4) expression -> . ID SUBSCRIPT ID ASSIGN expression
+    (5) expression -> . ID SUBSCRIPT ID
+    (6) expression -> . expression PLUS term
+    (7) expression -> . expression MINUS term
+    (8) expression -> . expression GTHAN term
+    (9) expression -> . expression EQUALTO term
+    (10) expression -> . expression AND term
+    (11) expression -> . expression OR term
+    (12) expression -> . term
+    (13) term -> . factor
+    (14) term -> . ID
+    (15) factor -> . NUMBER
+    (16) factor -> . TRUE
+    (17) factor -> . FALSE
+    (18) factor -> . STR
+    (19) factor -> . LBRACE expression RBRACE
+    (20) factor -> . LPAREN expression RPAREN
+
+    ID              shift and go to state 2
+    IF              shift and go to state 3
+    NUMBER          shift and go to state 8
+    TRUE            shift and go to state 9
+    FALSE           shift and go to state 10
+    STR             shift and go to state 11
+    LBRACE          shift and go to state 5
+    LPAREN          shift and go to state 4
+
+    expression                     shift and go to state 43
+    term                           shift and go to state 6
+    factor                         shift and go to state 7
+
+state 43
+
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression . RBRACE
+    (6) expression -> expression . PLUS term
+    (7) expression -> expression . MINUS term
+    (8) expression -> expression . GTHAN term
+    (9) expression -> expression . EQUALTO term
+    (10) expression -> expression . AND term
+    (11) expression -> expression . OR term
+
+    RBRACE          shift and go to state 44
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    GTHAN           shift and go to state 14
+    EQUALTO         shift and go to state 15
+    AND             shift and go to state 16
+    OR              shift and go to state 17
+
+
+state 44
+
+    (3) expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .
+
+    PLUS            reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    MINUS           reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    GTHAN           reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    EQUALTO         reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    AND             reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    OR              reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    $end            reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    RPAREN          reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+    RBRACE          reduce using rule 3 (expression -> IF LPAREN expression RPAREN LBRACE expression RBRACE ELSE LBRACE expression RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 30 resolved as shift
+WARNING: shift/reduce conflict for GTHAN in state 30 resolved as shift
+WARNING: shift/reduce conflict for EQUALTO in state 30 resolved as shift
+WARNING: shift/reduce conflict for AND in state 30 resolved as shift
+WARNING: shift/reduce conflict for OR in state 30 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 37 resolved as shift
+WARNING: shift/reduce conflict for GTHAN in state 37 resolved as shift
+WARNING: shift/reduce conflict for EQUALTO in state 37 resolved as shift
+WARNING: shift/reduce conflict for AND in state 37 resolved as shift
+WARNING: shift/reduce conflict for OR in state 37 resolved as shift
